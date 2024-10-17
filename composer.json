@@ -22,5 +22,12 @@
     },
     "require-dev": {
         "orchestra/testbench": "^9.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Syntaxterr\\Laravel\\Certificates\\CertificatesServiceProvider"
+            ]
+        }
     }
 }
