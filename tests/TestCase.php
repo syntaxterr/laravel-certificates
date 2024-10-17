@@ -1,9 +1,11 @@
 <?php
 
-use Orchestra\Testbench\Concerns\WithWorkbench;
-use Orchestra\Testbench\TestCase as TestbenchCase;
+namespace Syntaxterr\Laravel\Certificates\Tests;
 
-class TestCase extends TestbenchCase
+use Orchestra\Testbench\Concerns\WithWorkbench;
+use Orchestra\Testbench\TestCase as BaseTestCase;
+
+class TestCase extends BaseTestCase
 {
     use WithWorkbench;
 }

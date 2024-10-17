@@ -1,20 +1,25 @@
 {
     "name": "syntaxterr/laravel-certificates",
     "description": "Simple Laravel package to create and maintain certificates stored in database.",
-    "type": "library",
-    "license": "MIT",
-    "minimum-stability": "dev",
-    "autoload": {
-        "psr-4": {
-            "Syntaxterr\\LaravelCertificates\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Dennis Nielsen",
             "email": "dennis@syntaxterror.dk"
         }
     ],
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Syntaxterr\\Laravel\\Certificates\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Syntaxterr\\Laravel\\Certificates\\Tests\\": "tests/"
+        }
+    },
     "require-dev": {
         "orchestra/testbench": "^9.5"
     }
