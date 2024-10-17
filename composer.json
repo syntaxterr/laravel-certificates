@@ -3,6 +3,7 @@
     "description": "Simple Laravel package to create and maintain certificates stored in database.",
     "type": "library",
     "license": "MIT",
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Syntaxterr\\LaravelCertificates\\": "src/"
