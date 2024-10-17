@@ -13,12 +13,12 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Syntaxterr\\Laravel\\Certificates\\": "src/"
+            "Syntaxterr\\LaravelCertificates\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Syntaxterr\\Laravel\\Certificates\\Tests\\": "tests/"
+            "Syntaxterr\\LaravelCertificates\\Tests\\": "tests/"
         }
     },
     "require-dev": {
@@ -27,7 +27,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Syntaxterr\\Laravel\\Certificates\\CertificatesServiceProvider"
+                "Syntaxterr\\LaravelCertificates\\CertificatesServiceProvider"
             ]
         }
     }

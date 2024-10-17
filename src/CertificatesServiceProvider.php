@@ -1,6 +1,6 @@
 <?php
 
-namespace Syntaxterr\Laravel\Certificates;
+namespace Syntaxterr\LaravelCertificates;
 
 use Illuminate\Support\ServiceProvider;
 

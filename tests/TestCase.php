@@ -1,6 +1,6 @@
 <?php
 
-namespace Syntaxterr\Laravel\Certificates\Tests;
+namespace Syntaxterr\LaravelCertificates\Tests;
 
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as BaseTestCase;
