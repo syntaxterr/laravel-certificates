@@ -14,5 +14,7 @@
             "email": "dennis@syntaxterror.dk"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "orchestra/testbench": "^9.5"
+    }
 }
