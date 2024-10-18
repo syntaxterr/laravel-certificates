@@ -30,6 +30,16 @@ class Certificate extends Model
     public $timestamps = false;
     protected $hidden = ['private_key'];
 
+    /**
+     * Revokes the certificate
+     * @return void
+     */
+    public function revoke(): void
+    {
+        $this->revoked_at = Carbon::now();
+        $this->save();
+    }
+
     protected function casts(): array
     {
         return [

@@ -5,6 +5,7 @@ namespace Syntaxterr\LaravelCertificates;
 use Illuminate\Support\ServiceProvider;
 use Syntaxterr\LaravelCertificates\Console\Commands\CertCreateCommand;
 use Syntaxterr\LaravelCertificates\Console\Commands\CertListCommand;
+use Syntaxterr\LaravelCertificates\Console\Commands\CertRevokeCommand;
 
 class CertificatesServiceProvider extends ServiceProvider
 {
@@ -36,7 +37,8 @@ class CertificatesServiceProvider extends ServiceProvider
         if($this->app->runningInConsole()) {
             $this->commands([
                 CertCreateCommand::class,
-                CertListCommand::class
+                CertListCommand::class,
+                CertRevokeCommand::class
             ]);
         }
     }

@@ -30,4 +30,17 @@ class CertificateTest extends TestCase
             )
             ->assertExitCode(0);
     }
+
+    public function test_can_revoke_Certificate_from_console()
+    {
+        /** @var Certificate $cert */
+        $cert = Certificate::factory()->create();
+
+        $this->artisan("cert:revoke $cert->id")
+            ->expectsOutput('Certificate revoked.')
+            ->assertOk();
+
+        $cert->refresh();
+        $this->assertNotNull($cert->revoked_at);
+    }
 }
