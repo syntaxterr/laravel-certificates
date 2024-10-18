@@ -3,6 +3,7 @@
 namespace Syntaxterr\LaravelCertificates\Models;
 
 use Carbon\Carbon;
+use Database\Factories\CertificateFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -12,6 +13,8 @@ use phpseclib\Crypt\RSA as LegacyRSA;
 
 /**
  * Certificate Model
+ *
+ * @extends Model
  * @property string $id
  * @property string $public_key
  * @property string $private_key
@@ -25,6 +28,7 @@ class Certificate extends Model
 
     public $incrementing = false;
     public $timestamps = false;
+    protected $hidden = ['private_key'];
 
     protected function casts(): array
     {
@@ -55,5 +59,10 @@ class Certificate extends Model
                 $certificate->public_key = (string)$key->getPublicKey();
             }
         });
+    }
+
+    protected static function newFactory(): CertificateFactory
+    {
+        return CertificateFactory::new();
     }
 }
