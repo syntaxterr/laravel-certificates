@@ -2,6 +2,7 @@
 
 namespace Syntaxterr\LaravelCertificates;
 
+use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\ServiceProvider;
 use Syntaxterr\LaravelCertificates\Console\Commands\CertCreateCommand;
 use Syntaxterr\LaravelCertificates\Console\Commands\CertListCommand;
@@ -24,6 +25,7 @@ class CertificatesServiceProvider extends ServiceProvider
     {
         $this->registerCommands();
         $this->registerPublishing();
+        $this->registerAbout();
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
     }
@@ -51,6 +53,17 @@ class CertificatesServiceProvider extends ServiceProvider
     {
         $this->publishesMigrations([
             __DIR__.'/../database/migrations' => database_path('migrations'),
+        ]);
+    }
+
+    /**
+     * Registers the information displayed on the about command
+     * @return void
+     */
+    private function registerAbout(): void
+    {
+        AboutCommand::add('Certificates', fn() => [
+            'Version' => file_get_contents(__DIR__.'/../VERSION')
         ]);
     }
 }
