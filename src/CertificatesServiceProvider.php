@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Syntaxterr\LaravelCertificates\Console\Commands\CertCreateCommand;
 use Syntaxterr\LaravelCertificates\Console\Commands\CertListCommand;
 use Syntaxterr\LaravelCertificates\Console\Commands\CertRevokeCommand;
+use Syntaxterr\LaravelCertificates\Console\Commands\CertRotateCommand;
 
 class CertificatesServiceProvider extends ServiceProvider
 {
@@ -40,7 +41,8 @@ class CertificatesServiceProvider extends ServiceProvider
             $this->commands([
                 CertCreateCommand::class,
                 CertListCommand::class,
-                CertRevokeCommand::class
+                CertRevokeCommand::class,
+                CertRotateCommand::class
             ]);
         }
     }

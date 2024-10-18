@@ -43,4 +43,18 @@ class CertificateTest extends TestCase
         $cert->refresh();
         $this->assertNotNull($cert->revoked_at);
     }
+
+    public function test_can_rotate_certificate_from_console()
+    {
+        $cert = Certificate::factory()->create();
+
+        $this->artisan("cert:rotate $cert->id")
+            ->expectsOutput('Certificate rotated.')
+            ->assertExitCode(0);
+
+        $cert->refresh();
+        $this->assertNotNull($cert->revoked_at);
+
+        $this->assertDatabaseCount('certificates', 2);
+    }
 }
