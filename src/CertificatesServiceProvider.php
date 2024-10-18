@@ -8,6 +8,7 @@ use Syntaxterr\LaravelCertificates\Console\Commands\CertCreateCommand;
 use Syntaxterr\LaravelCertificates\Console\Commands\CertListCommand;
 use Syntaxterr\LaravelCertificates\Console\Commands\CertRevokeCommand;
 use Syntaxterr\LaravelCertificates\Console\Commands\CertRotateCommand;
+use Syntaxterr\LaravelCertificates\Models\Certificate;
 
 class CertificatesServiceProvider extends ServiceProvider
 {
@@ -64,8 +65,13 @@ class CertificatesServiceProvider extends ServiceProvider
      */
     private function registerAbout(): void
     {
-        AboutCommand::add('Certificates', fn() => [
-            'Version' => file_get_contents(__DIR__.'/../VERSION')
+        $certificates = Certificate::all(['id', 'revoked_at']);
+
+        AboutCommand::add('Certificates', [
+            'Version' => file_get_contents(__DIR__.'/../VERSION'),
+            'Total' => $certificates->count(),
+            'Active' => $certificates->where('revoked_at', null)->count(),
+            'Revoked' => $certificates->where('revoked_at', '!=', null)->count(),
         ]);
     }
 }
