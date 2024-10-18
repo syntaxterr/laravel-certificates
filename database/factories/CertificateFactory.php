@@ -1,14 +1,17 @@
 <?php
 
-namespace factories;
+namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Syntaxterr\LaravelCertificates\Models\Certificate;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Certificate>
+ * @extends Factory<Certificate>
  */
 class CertificateFactory extends Factory
 {
+    protected $model = Certificate::class;
+
     /**
      * Define the model's default state.
      *
