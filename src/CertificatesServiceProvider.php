@@ -22,14 +22,15 @@ class CertificatesServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerCommands();
+        $this->registerPublishing();
 
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-
-        $this->publishesMigrations([
-            __DIR__.'/../database/migrations' => database_path('migrations'),
-        ]);
     }
 
+    /**
+     * Registers the commands within the application
+     * @return void
+     */
     private function registerCommands(): void
     {
         if($this->app->runningInConsole()) {
@@ -38,5 +39,16 @@ class CertificatesServiceProvider extends ServiceProvider
                 CertListCommand::class
             ]);
         }
+    }
+
+    /**
+     * Registers the files that is being published
+     * @return void
+     */
+    private function registerPublishing(): void
+    {
+        $this->publishesMigrations([
+            __DIR__.'/../database/migrations' => database_path('migrations'),
+        ]);
     }
 }
