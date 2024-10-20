@@ -12,7 +12,7 @@ class CertCreateCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'cert:create';
+    protected $signature = 'cert:create {--L|length=2048 : RSA key length, default: 2048 bit}';
 
     /**
      * The console command description.
@@ -26,7 +26,8 @@ class CertCreateCommand extends Command
      */
     public function handle(): int
     {
-        $cert = Certificate::create();
+        $cert = Certificate::create(['length' => (int)$this->option('length')]);
+
         if(!$cert) {
             $this->error('Unable to create the certificate.');
             return 1;

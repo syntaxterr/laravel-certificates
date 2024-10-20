@@ -20,6 +20,7 @@ class CertificateFactory extends Factory
     public function definition(): array
     {
         return [
+            'length' => 2048
         ];
     }
 }

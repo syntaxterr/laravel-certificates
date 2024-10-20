@@ -25,11 +25,11 @@ class CertificatesServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+
         $this->registerCommands();
         $this->registerPublishing();
-        $this->registerAbout();
-
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        //$this->registerAbout();
     }
 
     /**

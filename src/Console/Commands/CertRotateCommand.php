@@ -38,7 +38,7 @@ class CertRotateCommand extends Command
         $result = DB::transaction(function () use ($cert) {
             $cert->revoke();
 
-            Certificate::create();
+            Certificate::create(['length' => $cert->length]);
         });
 
         if($result) {

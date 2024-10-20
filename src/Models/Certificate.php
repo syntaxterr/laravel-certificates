@@ -28,6 +28,9 @@ class Certificate extends Model
 
     public $incrementing = false;
     public $timestamps = false;
+
+    public $fillable = ['length'];
+
     protected $hidden = ['private_key'];
 
     /**
@@ -45,7 +48,8 @@ class Certificate extends Model
         return [
             'private_key' => 'encrypted',
             'created_at' => 'datetime',
-            'revoked_at' => 'datetime'
+            'revoked_at' => 'datetime',
+            'length' => 'integer'
         ];
     }
 
@@ -53,10 +57,9 @@ class Certificate extends Model
     {
         parent::booted();
 
-        static::creating(function ($certificate) {
+        static::creating(function (Certificate $certificate) {
             $certificate->id = ($certificate->id === null) ? Str::random() : $certificate->id;
             $certificate->created_at = ($certificate->created_at === null) ? Carbon::now() : $certificate->created_at;
-            $certificate->length = ($certificate->length === null) ? 4096 : $certificate->length;
 
             if(class_exists(LegacyRSA::class)){
                 $keys = (new LegacyRSA())->createKey($certificate->length);

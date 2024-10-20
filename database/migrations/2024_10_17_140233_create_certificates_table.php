@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('id', 16)->primary();
             $table->binary('public_key');
             $table->binary('private_key');
-            $table->integer('length');
+            $table->integer('length')->default(2048);
             $table->timestamp('created_at');
             $table->timestamp('revoked_at')->nullable();
         });
